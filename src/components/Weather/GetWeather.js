@@ -9,7 +9,7 @@ const Weather = (props) => {
 	async function requestWeather() {
 		const res = await fetch(
 			// TODO: Env API key
-			`https://api.weatherbit.io/v2.0/current?postal_code=${ZipCode}&country=US&units=I&key=${}`
+			`https://api.weatherbit.io/v2.0/current?postal_code=${ZipCode}&country=US&units=I&key=`
 		);
 
 		const json = await res.json();
@@ -21,7 +21,7 @@ const Weather = (props) => {
 	}
 
 	return (
-		<div className='relative block h-52 overflow-hidden bg-gray-200 rounded-lg shadow dark:bg-gray-800 xl:h-72 pt-4'>
+		<div className='weather-section'>
 			Weather Section
 			<form
 				className='flex flex-col justify-center items-center'
@@ -38,6 +38,7 @@ const Weather = (props) => {
 						value={ZipCode}
 						placeholder='Enter zip code'
 						type='number'
+						min='0'
 					/>
 				</label>
 				<button className='w-28 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
