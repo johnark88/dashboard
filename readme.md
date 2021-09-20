@@ -1,11 +1,11 @@
 # First Steps
 
-- user logsin
+- user logs in
 - user sees main dashboard
 
 Components to add first:
 
-- weather
+- weather - https://www.weatherbit.io/api/weather-current
 - air quality
 
 Components for later:
@@ -15,7 +15,6 @@ Components for later:
 - stock market overall
 - spcific stock tracker?
 - todo list
-- air quality
 - time tracker - work hours - export hours as well
 - job finder tracking
 - clocks - my timezone / mpls/ others.
