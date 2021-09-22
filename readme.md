@@ -7,11 +7,10 @@ Components to add first:
 
 - weather - https://www.weatherbit.io/api/weather-current
 - air quality
+- password generator
 
 Components for later:
 
-- pasword generator
-- weather
 - stock market overall
 - spcific stock tracker?
 - todo list

@@ -21,6 +21,24 @@ class PasswordGenerator extends Component {
 		display.value = password;
 	};
 
+	handleCopyToClipBoard = () => {
+		const passwordInput = document.getElementById('generatedPassword');
+		const lengthInput = document.getElementById('lengthInput');
+		const successMessage = document.getElementById('copy_success');
+		navigator.permissions.query({ name: 'clipboard-write' }).then((result) => {
+			if (result.state == 'granted' || result.state == 'prompt') {
+				const copyToClipboard = navigator.clipboard.writeText(
+					passwordInput.value
+				);
+				copyToClipboard.then(() => {
+					successMessage.innerHTML = 'Password saved to clipboard.';
+					passwordInput.value = '';
+					lengthInput.value = '';
+				});
+			}
+		});
+	};
+
 	// handle the password length and set it to state
 	handleChange = ({ target }) => {
 		this.setState({
@@ -30,39 +48,52 @@ class PasswordGenerator extends Component {
 
 	render() {
 		return (
-			<div className='pwg-section flex flex-col justify-center align-middle items-center'>
-				Password Generator
-				<div className='flex flex-row justify-center align-middle items-center'>
-					<label htmlFor='lengthInput' className='p-4'>
+			<div className='pwg-section flex flex-col justify-center align-middle items-center w-full'>
+				<span className='text-black font-bold text-2xl mb-4'>
+					Password Generator
+				</span>
+				<div className='flex flex-row justify-center align-middle items-center w-7/12 pt-2'>
+					<label htmlFor='lengthInput' className='mr-2'>
 						Password Length
 					</label>
 					<input
-						className='pwgen'
+						className='pwgen w-6/12'
 						type='number'
 						id='lengthInput'
 						name='passWordLength'
-						min='0'
+						min='5'
 						max='99'
 						maxLength='2'
 						onChange={this.handleChange}
 					/>
 				</div>
-				<button
-					className='w-28 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-					onClick={this.handleGeneratePassword}
-				>
-					Generate
-				</button>
-				<div className='pt-4 flex flex-row' style={{ width: '95%' }}>
+				<div className='pt-2 flex flex-row w-11/12'>
 					<input
-						style={{ width: '100%' }}
 						type='text'
 						id='generatedPassword'
-						className='generatedPassword'
+						className='generatedPassword w-full'
 						placeholder='Generated Password'
 						readOnly
 					/>
 				</div>
+				<div className='flex flex-row justify-around mt-2'>
+					<button
+						className='w-30 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2'
+						onClick={this.handleGeneratePassword}
+					>
+						Generate
+					</button>
+					<button
+						className='w-30 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+						onClick={this.handleCopyToClipBoard}
+					>
+						Copy password
+					</button>
+				</div>
+				<span
+					id='copy_success'
+					className='text-black font-bold p-4 mt-2s'
+				></span>
 			</div>
 		);
 	}
