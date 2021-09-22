@@ -22,7 +22,10 @@ const Weather = (props) => {
 
 	return (
 		<div className='weather-section'>
-			Weather Section
+			<span className='text-black font-bold text-2xl mb-4'>
+				Weather Section
+			</span>
+			<div></div>
 			<form
 				className='flex flex-col justify-center items-center'
 				onSubmit={(e) => {
