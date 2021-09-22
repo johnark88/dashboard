@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import WeatherResults from './WeatherResults';
+import BlueButton from '../Elements/BlueButton';
 
-const Weather = (props) => {
+const Weather = () => {
 	const [ZipCode, setZipCode] = useState('');
 	const [weather, setWeather] = useState();
 	const [status, setStatus] = useState(false);
@@ -44,9 +45,7 @@ const Weather = (props) => {
 						min='0'
 					/>
 				</label>
-				<button className='w-28 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
-					Submit
-				</button>
+				<BlueButton buttonText={'Submit'} extraClassName={'w-28'} />
 			</form>
 			{status ? <WeatherResults weather={weather} /> : <h3></h3>}
 		</div>
