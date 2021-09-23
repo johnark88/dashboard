@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import WeatherResults from './WeatherResults';
-import BlueButton from '../Elements/BlueButton';
+import Button from '../Elements/Button';
 
 const Weather = () => {
 	const [ZipCode, setZipCode] = useState('');
@@ -45,7 +45,7 @@ const Weather = () => {
 						min='0'
 					/>
 				</label>
-				<BlueButton buttonText={'Submit'} extraClassName={'w-28'} />
+				<Button buttonText={'Submit'} extraClassName={'w-28'} />
 			</form>
 			{status ? <WeatherResults weather={weather} /> : <h3></h3>}
 		</div>

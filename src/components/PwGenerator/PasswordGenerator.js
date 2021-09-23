@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import BlueButton from '../Elements/BlueButton';
+import Button from '../Elements/Button';
 
 class PasswordGenerator extends Component {
 	state = {
@@ -78,12 +78,12 @@ class PasswordGenerator extends Component {
 					/>
 				</div>
 				<div className='flex flex-row justify-around mt-2'>
-					<BlueButton
+					<Button
 						extraClassName='mr-2'
 						buttonText={'Generate'}
 						handleClick={this.handleGeneratePassword}
 					/>
-					<BlueButton
+					<Button
 						extraClassName='mr-2'
 						buttonText={'Copy password'}
 						handleClick={this.handleCopyToClipBoard}
